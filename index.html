@@ -227,7 +227,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
   <div id="result">PUTAR UNTUK MEMULAI</div>
   <button id="claimBtn">KLAIM VIA WHATSAPP</button>
   <button id="shareBtn" style="display:none;background:linear-gradient(135deg,#0ea5e9,#0369a1);color:#fff;margin-top:4px;font-size:12px">SHARE HASIL</button>
-  <span id="spinInfo">Memuat...</span>
+  <span id="spinInfo">Sisa Spin: -</span>
   <span id="spinFree" style="min-height:15px"></span>
   <span id="devInfo" style="cursor:pointer"></span>
   <!-- Riwayat Spin Saya (per user, realtime dari Firebase) -->
@@ -397,7 +397,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
     <!-- INFO EVENT — section terpisah, bisa diedit & dikosongkan -->
     <div class="as">
       <span class="ast">📢 INFO EVENT</span>
-      <div id="infoPreview" style="background:rgba(0,255,213,.05);border:1px solid rgba(0,255,213,.1);border-radius:6px;padding:7px;font-size:11px;color:#ccc;min-height:32px;margin-bottom:7px;line-height:1.4;white-space:pre-wrap">Memuat...</div>
+      <div id="infoPreview" style="background:rgba(0,255,213,.05);border:1px solid rgba(0,255,213,.1);border-radius:6px;padding:7px;font-size:11px;color:#ccc;min-height:32px;margin-bottom:7px;line-height:1.4;white-space:pre-wrap">(kosong)</div>
       <textarea id="infoInput" placeholder="Tulis info/pengumuman... (kosongkan untuk hapus)" style="resize:vertical;height:80px;margin-top:0;font-size:11px"></textarea>
       <div style="display:flex;gap:6px;margin-top:7px">
         <button id="saveInfoBtn" class="bp" style="flex:2;font-size:11px">💾 Simpan Info</button>
@@ -660,6 +660,15 @@ function spinTo(idx, cb) {
 function startListeners() {
   if (!db) return;
 
+  // Fallback settings kalau Firebase tidak respond dalam 4 detik
+  setTimeout(function(){
+    if(!cfg.eventOn && !cfg.freeSpinNewUser){
+      // Settings belum datang, pakai default
+      cfg.freeSpinNewUser=5;
+      updateStatusUI();
+    }
+  },4000);
+
   db.ref('settings').on('value', function(s) {
     cfg = s.val()||{};
     if (cfg.eventOn===undefined) cfg.eventOn=false;
@@ -727,7 +736,9 @@ function startListeners() {
     if (Array.isArray(raw)) prizes=raw.filter(function(x){return x&&x.label;});
     else if (raw&&typeof raw==='object') prizes=Object.values(raw).filter(function(x){return x&&x.label;});
     else prizes=[];
-    drawWheel(); renderItemList();
+    drawWheel();
+  setBadge('st-off','MENGHUBUNGKAN...');
+  document.getElementById('timerL').innerText='Menghubungkan ke server...'; renderItemList();
     if (isAdmin){renderWheelList();renderChance();}
   });
 
@@ -857,6 +868,11 @@ function startListeners() {
 // ══════════════════════════════════════════
 function checkNewUser() {
   if (!db) return;
+  // Fallback: kalau 3 detik userSpins belum update, set 0
+  setTimeout(function(){
+    var si=document.getElementById('spinInfo');
+    if(si&&si.innerText==='Sisa Spin: -') si.innerText='Sisa Spin: 0';
+  }, 3000);
   // Restore nama dari Firebase (lock permanen, tidak hilang meski hapus cache)
   db.ref('lockedNames/'+DEVID).once('value',function(ns){
     var lockedName=ns.val();
@@ -2047,9 +2063,14 @@ window.addEventListener('load', function() {
     if (s.val() === true) {
       clearTimeout(_connTimeout);
       doHide('Terhubung');
+      // Update badge ke online
+      setTimeout(function(){
+        if(cfg.eventOn) setBadge('st-on','EVENT BERJALAN');
+        else setBadge('st-off','EVENT OFFLINE');
+      }, 500);
     } else if (s.val() === false) {
-      // Offline mode - hide setelah 2.5 detik
-      setTimeout(function(){ doHide('Mode offline'); }, 2500);
+      setBadge('st-wait','OFFLINE MODE');
+      setTimeout(function(){ doHide('Mode offline'); }, 2000);
     }
   });
 });
