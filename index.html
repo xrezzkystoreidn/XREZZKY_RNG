@@ -4,25 +4,27 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>XREZZKYSTORE RNG GIVEAWAY</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:radial-gradient(ellipse at 50% 0%,#0a2f2f,#020b0b 65%);min-height:100vh;font-family:'Share Tech Mono',monospace;color:#fff;display:flex;justify-content:center;padding:12px 8px 60px}
+body{background:radial-gradient(ellipse at 50% 0%,#0a2f2f,#020b0b 65%);min-height:100vh;font-family:'Share Tech Mono','Courier New',monospace;color:#fff;display:flex;justify-content:center;padding:12px 8px 60px}
 #lo{position:fixed;inset:0;background:#020b0b;z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;transition:opacity .4s}
 .ring{width:46px;height:46px;border:3px solid rgba(0,255,213,.1);border-top-color:#00ffd5;border-radius:50%;animation:kspin .8s linear infinite}
 @keyframes kspin{to{transform:rotate(360deg)}}
-#loTxt{font-family:'Orbitron',sans-serif;color:#00ffd5;font-size:11px;letter-spacing:3px}
+#loTxt{font-family:'Orbitron','Arial',sans-serif;color:#00ffd5;font-size:11px;letter-spacing:3px}
 #loSub{font-size:10px;color:#aaa;letter-spacing:1px}
 #wo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.93);z-index:7000;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:20px}
 .we{font-size:56px;animation:weBounce .5s ease infinite alternate}
 @keyframes weBounce{from{transform:scale(1)}to{transform:scale(1.1)}}
-.wt{font-family:'Orbitron',sans-serif;font-size:22px;color:#ffcc00;margin:10px 0 6px;animation:wglow 1.5s ease-in-out infinite alternate}
+.wt{font-family:'Orbitron','Arial',sans-serif;font-size:22px;color:#ffcc00;margin:10px 0 6px;animation:wglow 1.5s ease-in-out infinite alternate}
 @keyframes wglow{from{text-shadow:0 0 10px #ffcc00}to{text-shadow:0 0 40px #ffcc00,0 0 70px #ff8800}}
 .box{width:100%;max-width:420px;background:#071414;border-radius:18px;padding:16px;box-shadow:0 0 40px rgba(0,255,213,.12);border:1px solid rgba(0,255,213,.18);display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden}
 .box::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#00ffd5,transparent)}
 .hdr{width:100%;display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:4px}
 #accBtn{position:absolute;right:0;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#00ffd5,#007a6a);border:none;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 0 12px rgba(0,255,213,.3)}
-h2{font-family:'Orbitron',sans-serif;font-size:18px;color:#00ffd5;letter-spacing:3px;text-shadow:0 0 20px rgba(0,255,213,.6);cursor:pointer;user-select:none}
+h2{font-family:'Orbitron','Arial',sans-serif;font-size:18px;color:#00ffd5;letter-spacing:3px;text-shadow:0 0 20px rgba(0,255,213,.6);cursor:pointer;user-select:none}
 .sub{font-size:9px;letter-spacing:4px;color:rgba(0,255,213,.5);text-align:center;margin-bottom:8px}
 #bb{display:none;width:100%;padding:7px 12px;border-radius:8px;margin-bottom:8px;background:linear-gradient(135deg,#1a0a00,rgba(245,158,11,.08));border:1px solid #f59e0b;font-size:11px;color:#fcd34d;text-align:center;animation:bbp 2s ease-in-out infinite}
 @keyframes bbp{0%,100%{box-shadow:0 0 6px rgba(245,158,11,.2)}50%{box-shadow:0 0 18px rgba(245,158,11,.5)}}
@@ -30,25 +32,25 @@ h2{font-family:'Orbitron',sans-serif;font-size:18px;color:#00ffd5;letter-spacing
 #tkw::before,#tkw::after{content:'';position:absolute;top:0;bottom:0;width:20px;z-index:2}
 #tkw::before{left:0;background:linear-gradient(90deg,#071414,transparent)}
 #tkw::after{right:0;background:linear-gradient(-90deg,#071414,transparent)}
-#tk{white-space:nowrap;display:inline-block;font-size:11px;color:#00ffd5;animation:tks 30s linear infinite;padding-left:100%}
+#tk{white-space:nowrap;display:inline-block;font-size:11px;color:#00ffd5;animation:tks 18s linear infinite;padding-left:100%;will-change:transform}
 @keyframes tks{from{transform:translateX(0)}to{transform:translateX(-100%)}}
-#evInd{width:100%;padding:7px 12px;border-radius:8px;text-align:center;font-family:'Orbitron',sans-serif;font-size:11px;letter-spacing:2px;font-weight:700;margin-bottom:8px;transition:all .3s}
+#evInd{width:100%;padding:7px 12px;border-radius:8px;text-align:center;font-family:'Orbitron','Arial',sans-serif;font-size:11px;letter-spacing:2px;font-weight:700;margin-bottom:8px;transition:all .3s}
 .st-on{background:linear-gradient(135deg,#064e1a,#16a34a);color:#4ade80;border:1px solid #16a34a;box-shadow:0 0 14px rgba(22,163,74,.3)}
 .st-off{background:linear-gradient(135deg,#4e0606,#ef4444);color:#fca5a5;border:1px solid #ef4444;box-shadow:0 0 14px rgba(239,68,68,.3)}
 .st-wait{background:linear-gradient(135deg,#4e2e06,#f59e0b);color:#fcd34d;border:1px solid #f59e0b;box-shadow:0 0 14px rgba(245,158,11,.3)}
 #timerBox{width:100%;background:rgba(0,0,0,.4);border:1px solid rgba(0,255,213,.12);border-radius:10px;padding:9px 12px;margin-bottom:10px}
 #timerDI{font-size:10px;color:rgba(0,255,213,.6);margin-bottom:4px;min-height:13px}
 #timerL{font-size:10px;color:#aaa;margin-bottom:3px}
-#timerC{font-family:'Orbitron',sans-serif;font-size:17px;color:#00ffd5;letter-spacing:2px}
+#timerC{font-family:'Orbitron','Arial',sans-serif;font-size:17px;color:#00ffd5;letter-spacing:2px}
 .tu{color:#ffcc66}
 #stats{width:100%;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-bottom:10px}
 .sb{background:rgba(0,0,0,.3);border:1px solid rgba(0,255,213,.1);border-radius:7px;padding:5px;text-align:center}
-.sb .v{font-family:'Orbitron',sans-serif;font-size:14px;color:#00ffd5}
+.sb .v{font-family:'Orbitron','Arial',sans-serif;font-size:14px;color:#00ffd5}
 .sb .l{font-size:8px;color:#aaa;margin-top:1px}
-input,select,textarea{width:100%;padding:9px 11px;border-radius:8px;border:1px solid rgba(0,255,213,.2);background:rgba(0,0,0,.4);color:#fff;font-family:'Share Tech Mono',monospace;font-size:12px;margin-top:7px;outline:none;transition:border-color .2s}
+input,select,textarea{width:100%;padding:9px 11px;border-radius:8px;border:1px solid rgba(0,255,213,.2);background:rgba(0,0,0,.4);color:#fff;font-family:'Share Tech Mono','Courier New',monospace;font-size:12px;margin-top:7px;outline:none;transition:border-color .2s}
 input:focus,select:focus,textarea:focus{border-color:#00ffd5;box-shadow:0 0 7px rgba(0,255,213,.2)}
 input:disabled{opacity:.6;cursor:not-allowed}
-button{width:100%;padding:9px;border-radius:8px;border:none;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:12px;font-weight:700;transition:transform .15s,opacity .15s}
+button{width:100%;padding:9px;border-radius:8px;border:none;cursor:pointer;font-family:'Share Tech Mono','Courier New',monospace;font-size:12px;font-weight:700;transition:transform .15s,opacity .15s}
 button:active{transform:scale(.96)}
 button:disabled{opacity:.5;cursor:not-allowed;transform:none}
 .bp{background:linear-gradient(135deg,#00ffd5,#007a6a);color:#000}
@@ -63,7 +65,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
 #wCon{position:relative;width:290px;height:290px}
 #wCanvas{width:290px;height:290px;border-radius:50%;border:4px solid rgba(0,255,213,.3);box-shadow:0 0 30px rgba(0,255,213,.2);display:block;transition:transform 4s cubic-bezier(.17,.67,.12,.99)}
 #wCanvas.glow{box-shadow:0 0 50px rgba(0,255,213,.6)}
-#wCenter{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;background:linear-gradient(135deg,#00ffd5,#007a6a);border-radius:50%;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-size:8px;color:#000;font-weight:900;z-index:10;pointer-events:none}
+#wCenter{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:42px;height:42px;background:linear-gradient(135deg,#00ffd5,#007a6a);border-radius:50%;border:3px solid #fff;display:flex;align-items:center;justify-content:center;font-family:'Orbitron','Arial',sans-serif;font-size:8px;color:#000;font-weight:900;z-index:10;pointer-events:none}
 #arrow{position:absolute;top:-20px;left:50%;transform:translateX(-50%);z-index:20;filter:drop-shadow(0 0 6px #00ffd5)}
 #arrow svg{width:22px;height:26px}
 #waInput{border-color:rgba(0,255,213,.3)!important}
@@ -93,8 +95,8 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
 .il-name{font-size:12px;flex:1}
 .il-badge{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:700;flex-shrink:0}
 .il-pct{font-size:10px;color:#aaa;margin-left:6px;flex-shrink:0}
-#spinBtn{font-family:'Orbitron',sans-serif;font-size:15px;letter-spacing:2px;padding:14px;background:linear-gradient(135deg,#00ffd5,#007a6a);color:#000;font-weight:900;box-shadow:0 4px 18px rgba(0,255,213,.3)}
-#result{margin:10px 0 4px;font-family:'Orbitron',sans-serif;font-size:13px;font-weight:700;text-align:center;min-height:26px;color:#00ffd5;letter-spacing:1px}
+#spinBtn{font-family:'Orbitron','Arial',sans-serif;font-size:15px;letter-spacing:2px;padding:14px;background:linear-gradient(135deg,#00ffd5,#007a6a);color:#000;font-weight:900;box-shadow:0 4px 18px rgba(0,255,213,.3)}
+#result{margin:10px 0 4px;font-family:'Orbitron','Arial',sans-serif;font-size:13px;font-weight:700;text-align:center;min-height:26px;color:#00ffd5;letter-spacing:1px}
 .rw{color:#4ade80;text-shadow:0 0 18px rgba(74,222,128,.6);animation:rp 1s infinite}
 .rl{color:#f87171}
 @keyframes rp{0%,100%{opacity:1}50%{opacity:.7}}
@@ -123,7 +125,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
 .ci{display:flex;justify-content:space-between;align-items:center;padding:5px 7px;border-radius:6px;margin-bottom:4px;background:rgba(0,255,213,.04);border:1px solid rgba(0,255,213,.1)}
 .mo{display:none;position:fixed;inset:0;background:rgba(0,0,0,.87);z-index:8000;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
 .mb{width:320px;background:#071414;border:1px solid rgba(0,255,213,.3);padding:18px;border-radius:16px;box-shadow:0 0 40px rgba(0,255,213,.15);max-height:90vh;overflow-y:auto}
-.mb h3{font-family:'Orbitron',sans-serif;color:#00ffd5;text-align:center;margin-bottom:14px;font-size:14px;letter-spacing:2px}
+.mb h3{font-family:'Orbitron','Arial',sans-serif;color:#00ffd5;text-align:center;margin-bottom:14px;font-size:14px;letter-spacing:2px}
 .air{margin-bottom:10px}
 .air label{font-size:9px;color:#aaa;display:block;margin-bottom:3px;letter-spacing:1px}
 .aiv{background:rgba(0,0,0,.4);border:1px solid rgba(0,255,213,.2);border-radius:6px;padding:7px 9px;font-size:11px;color:#00ffd5;word-break:break-all}
@@ -137,7 +139,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
 .cd-ib{background:rgba(255,255,255,.07);border-radius:2px;height:5px;overflow:hidden}
 .cd-if{height:100%;border-radius:2px;transition:width .5s}
 #cnf{position:fixed;inset:0;pointer-events:none;z-index:6999}
-#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);padding:9px 16px;border-radius:9px;font-family:'Share Tech Mono',monospace;font-size:11px;z-index:9998;max-width:300px;text-align:center;transition:opacity .3s;pointer-events:none;opacity:0}
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);padding:9px 16px;border-radius:9px;font-family:'Share Tech Mono','Courier New',monospace;font-size:11px;z-index:9998;max-width:300px;text-align:center;transition:opacity .3s;pointer-events:none;opacity:0}
 ::-webkit-scrollbar{width:3px}
 ::-webkit-scrollbar-thumb{background:#00ffd5;border-radius:2px}
 </style>
@@ -149,9 +151,9 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
 <div id="wo">
   <div class="we">&#127881;</div>
   <div class="wt">SELAMAT!</div>
-  <div id="woPrize" style="font-family:'Orbitron',sans-serif;font-size:15px;color:#00ffd5;margin-bottom:5px;padding:0 10px"></div>
+  <div id="woPrize" style="font-family:'Orbitron','Arial',sans-serif;font-size:15px;color:#00ffd5;margin-bottom:5px;padding:0 10px"></div>
   <div id="woName" style="color:#aaa;font-size:12px;margin-bottom:18px"></div>
-  <button id="woClose" style="width:210px;background:linear-gradient(135deg,#ffcc00,#f59e0b);color:#000;font-family:'Orbitron',sans-serif;font-weight:900;padding:12px;border-radius:11px;border:none;cursor:pointer;font-size:13px">Klaim Hadiah</button>
+  <button id="woClose" style="width:210px;background:linear-gradient(135deg,#ffcc00,#f59e0b);color:#000;font-family:'Orbitron','Arial',sans-serif;font-weight:900;padding:12px;border-radius:11px;border:none;cursor:pointer;font-size:13px">Klaim Hadiah</button>
 </div>
 <div id="accModal" class="mo">
   <div class="mb">
@@ -194,7 +196,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
   <div id="bb"></div>
   <div id="tkw"><span id="tk">XREZZKYSTORE RNG GIVEAWAY - Putar roda dan menangkan hadiah!</span></div>
   <div id="evInd" class="st-off">EVENT OFFLINE</div>
-  <div id="timerBox"><div id="timerDI"></div><div id="timerL">-</div><div id="timerC" style="font-family:'Orbitron',sans-serif;font-size:17px;color:#00ffd5;letter-spacing:2px">OFFLINE</div></div>
+  <div id="timerBox"><div id="timerDI"></div><div id="timerL">-</div><div id="timerC" style="font-family:'Orbitron','Arial',sans-serif;font-size:17px;color:#00ffd5;letter-spacing:2px">OFFLINE</div></div>
   <div id="stats">
     <div class="sb"><div class="v" id="stWin">0</div><div class="l">MENANG</div></div>
     <div class="sb"><div class="v" id="stSpin">0</div><div class="l">SPIN</div></div>
@@ -265,10 +267,11 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
   </div>
   <div id="adminPanel">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-      <div style="font-family:'Orbitron',sans-serif;color:#ffcc00;font-size:12px;letter-spacing:2px">⚙️ ADMIN PANEL</div>
+      <div style="font-family:'Orbitron','Arial',sans-serif;color:#ffcc00;font-size:12px;letter-spacing:2px">⚙️ ADMIN PANEL</div>
       <div style="display:flex;align-items:center;gap:6px">
         <div style="background:rgba(255,204,0,.15);border:1px solid #ffcc00;border-radius:20px;padding:3px 10px;font-size:9px;color:#ffcc00;letter-spacing:1px" id="adminDevBadge">ADMIN</div>
-        <button id="adminLogoutBtn" style="background:rgba(239,68,68,.2);border:1px solid #ef4444;color:#fca5a5;font-size:9px;padding:3px 8px;border-radius:6px;cursor:pointer;font-family:Share Tech Mono,monospace;width:auto;letter-spacing:1px">LOGOUT</button>
+        <button id="changePinBtn" style="background:rgba(0,255,213,.15);border:1px solid #00ffd5;color:#00ffd5;font-size:9px;padding:3px 8px;border-radius:6px;cursor:pointer;font-family:'Share Tech Mono','Courier New',monospace;width:auto;letter-spacing:1px">GANTI PIN</button>
+        <button id="adminLogoutBtn" style="background:rgba(239,68,68,.2);border:1px solid #ef4444;color:#fca5a5;font-size:9px;padding:3px 8px;border-radius:6px;cursor:pointer;font-family:'Share Tech Mono','Courier New',monospace;width:auto;letter-spacing:1px">LOGOUT</button>
       </div>
     </div>
     <div id="adminNotifBanner" style="display:none;background:rgba(74,222,128,.12);border:1px solid #4ade80;border-radius:8px;padding:7px 10px;font-size:11px;color:#4ade80;text-align:center;margin-bottom:10px;animation:bbp 1.5s ease-in-out infinite"></div>
@@ -585,7 +588,7 @@ var _loFailsafe = setTimeout(function() { hideLo('Siap'); }, 6000);
 // Firebase init di sini, bukan global scope
 // ══════════════════════════════════════════
 var db = null;
-var ADMIN_PIN = 'XREZZKY STORE0930';
+var ADMIN_PIN = null; // PIN sekarang disimpan di Firebase, tidak di source code
 var ADMIN_WA  = '6288293064112';
 
 var DEVID = (function() {
@@ -1235,6 +1238,16 @@ document.addEventListener('DOMContentLoaded',function(){
     if(!confirm('Logout dari admin panel?'))return;
     deactivateAdmin();
   };
+  document.getElementById('changePinBtn').onclick=function(){
+    if(!db)return;
+    var newPin=prompt('PIN baru (minimal 6 karakter):');
+    if(!newPin||newPin.length<6){toast('PIN minimal 6 karakter!','error');return;}
+    var confirmPin=prompt('Ulangi PIN baru:');
+    if(newPin!==confirmPin){toast('PIN tidak sama!','error');return;}
+    db.ref('adminConfig/pin').set(newPin);
+    toast('PIN admin berhasil diganti!','success');
+    addAdminLog('PIN admin diganti');
+  };
   document.getElementById('clearAdminLogBtn').onclick=function(){localStorage.removeItem(_adminLogKey);document.getElementById('adminLog').innerHTML='<div style="color:#555;font-size:10px;text-align:center;padding:6px">Log dihapus</div>';};
   document.getElementById('blacklistBtn').onclick=doBlacklist;
   document.getElementById('unblacklistBtn').onclick=doUnblacklist;
@@ -1269,12 +1282,22 @@ function onTitleClick() {
   if(titleHits>=5){
     titleHits=0;clearTimeout(titleTimer);
     var p=prompt('PIN Admin:');if(p===null)return;
-    if(p===ADMIN_PIN){
-      activateAdmin();
-    }else{
-      toast('PIN salah!','error');
-      logAccess('ADMIN_FAIL','PIN salah','admin');
-    }
+    if(!db){toast('Tidak terhubung ke server!','error');return;}
+    // Ambil PIN dari Firebase (tidak ada di source code)
+    db.ref('adminConfig/pin').once('value',function(s){
+      var correctPin=s.val();
+      // First-time setup: kalau belum ada PIN tersimpan, pakai default & simpan
+      if(correctPin===null){
+        correctPin='XREZZKY STORE0930';
+        db.ref('adminConfig/pin').set(correctPin);
+      }
+      if(p===correctPin){
+        activateAdmin();
+      }else{
+        toast('PIN salah!','error');
+        logAccess('ADMIN_FAIL','PIN salah','admin');
+      }
+    });
   }
 }
 
