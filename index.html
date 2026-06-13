@@ -194,7 +194,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
   <div id="bb"></div>
   <div id="tkw"><span id="tk">XREZZKYSTORE RNG GIVEAWAY - Putar roda dan menangkan hadiah!</span></div>
   <div id="evInd" class="st-off">EVENT OFFLINE</div>
-  <div id="timerBox"><div id="timerDI"></div><div id="timerL">-</div><div id="timerC">-- : -- : -- : --</div></div>
+  <div id="timerBox"><div id="timerDI"></div><div id="timerL">-</div><div id="timerC" style="font-family:'Orbitron',sans-serif;font-size:17px;color:#00ffd5;letter-spacing:2px">OFFLINE</div></div>
   <div id="stats">
     <div class="sb"><div class="v" id="stWin">0</div><div class="l">MENANG</div></div>
     <div class="sb"><div class="v" id="stSpin">0</div><div class="l">SPIN</div></div>
@@ -227,7 +227,7 @@ button:disabled{opacity:.5;cursor:not-allowed;transform:none}
   <div id="result">PUTAR UNTUK MEMULAI</div>
   <button id="claimBtn">KLAIM VIA WHATSAPP</button>
   <button id="shareBtn" style="display:none;background:linear-gradient(135deg,#0ea5e9,#0369a1);color:#fff;margin-top:4px;font-size:12px">SHARE HASIL</button>
-  <span id="spinInfo">Sisa Spin: -</span>
+  <span id="spinInfo">Sisa Spin: 0</span>
   <span id="spinFree" style="min-height:15px"></span>
   <span id="devInfo" style="cursor:pointer"></span>
   <!-- Riwayat Spin Saya (per user, realtime dari Firebase) -->
@@ -684,7 +684,8 @@ function startListeners() {
 
   db.ref('infoBoard').on('value', function(s) {
     var v = s.val()||'';
-    setTxt('infoContent', v||'Info event belum diisi admin.');
+    var infoEl=document.getElementById('infoContent');
+    if(infoEl) infoEl.innerText = v||'Info event belum diisi admin.';
     var prev=document.getElementById('infoPreview');
     if (prev) prev.innerText=v||'(kosong)';
     var inp=document.getElementById('infoInput');
@@ -737,9 +738,8 @@ function startListeners() {
     else if (raw&&typeof raw==='object') prizes=Object.values(raw).filter(function(x){return x&&x.label;});
     else prizes=[];
     drawWheel();
-  setBadge('st-off','MENGHUBUNGKAN...');
-  document.getElementById('timerL').innerText='Menghubungkan ke server...'; renderItemList();
-    if (isAdmin){renderWheelList();renderChance();}
+    renderItemList();
+    if(isAdmin){renderWheelList();renderChance();}
   });
 
   db.ref('codes').on('value', function(s) {
@@ -805,7 +805,12 @@ function startListeners() {
 
   db.ref('userSpins/'+DEVID).on('value', function(s) {
     var raw=s.val();
-    mySpins=(raw===null||raw===undefined)?0:Number(raw);
+    if(raw===null||raw===undefined){
+      // User baru - tampilkan 0 dulu, checkNewUser akan set free spin
+      mySpins=0;
+    } else {
+      mySpins=Number(raw);
+    }
     setTxt('stSpin',mySpins);
     var si=document.getElementById('spinInfo');
     if(si) si.innerText='Sisa Spin: '+mySpins;
@@ -868,11 +873,6 @@ function startListeners() {
 // ══════════════════════════════════════════
 function checkNewUser() {
   if (!db) return;
-  // Fallback: kalau 3 detik userSpins belum update, set 0
-  setTimeout(function(){
-    var si=document.getElementById('spinInfo');
-    if(si&&si.innerText==='Sisa Spin: -') si.innerText='Sisa Spin: 0';
-  }, 3000);
   // Restore nama dari Firebase (lock permanen, tidak hilang meski hapus cache)
   db.ref('lockedNames/'+DEVID).once('value',function(ns){
     var lockedName=ns.val();
@@ -885,10 +885,15 @@ function checkNewUser() {
   // Cek free spin
   db.ref('userSpins/'+DEVID).once('value',function(s){
     if (s.val()===null) {
-      var free=cfg.freeSpinNewUser||5;
-      db.ref('userSpins/'+DEVID).set(free);
-      document.getElementById('spinFree').innerText='Bonus '+free+' Spin User Baru!';
-      setTimeout(function(){document.getElementById('spinFree').innerText='';},7000);
+      var free=Number(cfg.freeSpinNewUser)||5;
+      db.ref('userSpins/'+DEVID).set(free, function(){
+        // Listener userSpins akan otomatis update UI
+        var sf=document.getElementById('spinFree');
+        if(sf){
+          sf.innerText='Bonus '+free+' Spin User Baru!';
+          setTimeout(function(){sf.innerText='';},7000);
+        }
+      });
     }
   });
 }
